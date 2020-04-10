@@ -1,0 +1,36 @@
+import java.util.*;
+class Ems
+{
+ static int eid=0;
+ String ename;
+ long enumb;
+ String edob;
+ String eadd;
+ String edept;
+ void emp()
+ {
+  int x=this.eid;
+  this.eid=++x;
+ }
+ void emp(String name)
+ {
+     this.ename=name;
+ }
+ void emp(long pno)
+ {
+     this.enumb=pno;
+ }
+ void empdob(String dob)
+ {
+     this.edob=dob;
+ }
+ void empadd(String add)
+ {
+     this.eadd=add;
+ }
+ void empdep(String dep)
+ {
+     this.edept=empdep;
+ }
+}
+
