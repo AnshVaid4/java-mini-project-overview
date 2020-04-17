@@ -1,5 +1,6 @@
 import java.util.*;
-class Ems
+import java.io.*;
+class test
 {
  static int eid=0;
  String ename;
@@ -7,10 +8,11 @@ class Ems
  String edob;
  String eadd;
  String edept;
- void emp()
- {
-  int x=this.eid;
-  this.eid=++x;
+ int emp()
+ {eid++;
+  int x=eid;
+  this.eid=x;
+  return x;
  }
  void emp(String name)
  {
@@ -30,7 +32,125 @@ class Ems
  }
  void empdep(String dep)
  {
-     this.edept=empdep;
+     this.edept=dep;
  }
+ 
+
+
+
 }
+
+class beta extends test
+{   
+    public static void done(String a) throws IOException
+    {FileOutputStream out=new FileOutputStream("C:\\Users\\Ansh Vaid\\Desktop\\Java Assignment\\file.txt",true);
+      byte c[]=a.getBytes();char d='\n';
+              int i=0; 
+              try{
+                     while(i<c.length)
+                     {
+                         out.write(c[i]);
+                          i++;
+                     }
+                 }
+             catch(FileNotFoundException e)
+             {
+                 System.out.println("ERROR");
+             }
+             finally
+             {   out.write((byte)d);
+                 out.close();
+             }       
+    }
+    public static void done(String a ,char x) throws IOException
+    {FileOutputStream out=new FileOutputStream("C:\\Users\\Ansh Vaid\\Desktop\\Java Assignment\\file.txt",true);
+      byte c[]=a.getBytes();
+              int i=0; 
+              try{
+                     while(i<c.length)
+                     {
+                         out.write(c[i]);
+                          i++;
+                     }
+                 }
+             catch(FileNotFoundException e)
+             {
+                 System.out.println("ERROR");
+             }
+             finally
+             {   out.write((byte)x);
+                 out.close();
+             }       
+    }
+    
+    public static void main(String[] args) throws IOException {
+        
+        FileInputStream in=new FileInputStream("C:\\Users\\Ansh Vaid\\Desktop\\Java Assignment\\file.txt");
+        test ob=new test();
+        Scanner sc=new Scanner(System.in);
+        char cont='y';
+    while (cont =='y' || cont =='Y' )
+    {
+        System.out.println("WELCOME TO EMPOYEE MANAGEMENT SYSTEM\n");
+        System.out.println("\nMENU\n");
+        System.out.println("1. New Employee Registration\n");
+        System.out.println("2. Show All Employee List\n");
+        System.out.println("3. Search Empoyee With Eid\n");
+        System.out.println("4. Search Empoyees Department Wise\n");
+        System.out.println("5. Edit The Information Of Specific Empoyee\n");
+        System.out.println("6. EXIT\n");
+        System.out.print("Enter Your Choice: ");
+        int x=sc.nextInt();
+        sc.nextLine();
+        
+        byte b;
+        
+        switch(x)
+        {
+            case 1:
+            System.out.println("\n WELCOME TO NEW EMPLOYEE REGISTRATION\n");
+            int id=ob.emp();beta.done(Integer.toString(id));
+            System.out.print("Enter Your Name -> ");
+            String name=sc.nextLine(); ob.emp(name); 
+            beta.done(name);
+            System.out.print("Enter Your Phone Number -> ");
+            long pno=sc.nextLong(); ob.emp(pno);sc.nextLine();
+            beta.done(Long.toString(pno));
+            System.out.print("Enter Your DOB(yyyy/mm/dd) ->");
+            String dob=sc.nextLine(); ob.empdob(dob);
+            beta.done(dob);
+            System.out.print("Enter Your Address -> ");
+            String add=sc.nextLine(); ob.empadd(add);
+            beta.done(add);
+            System.out.print("Enter Your Department -> ");
+            String dep=sc.nextLine(); ob.empdep(dep);
+            beta.done(dep,'\n');
+ 
+           // System.out.println(ob.eid +" "+ob.ename+" "+ob.enumb+" "+ob.edob+" "+ob.eadd+" "+ob.edept);
+
+            break;
+            case 2:
+
+            break;
+            case 3:
+            break;
+            case 4:
+            break;        
+            case 5:
+            break;
+            case 6:
+            break;
+            default :System.out.println("SORRY WRONG OPTION!! TRY AGAIN");
+                     cont='y';
+                     break;
+        }
+        System.out.print("Do you want to continue?Press Y/y for yes | N/n for no ->");cont=sc.next().charAt(0);
+    }  //while ends
+     
+  
+    
+    }  //main ends
+}//beta ends
+
+
 
